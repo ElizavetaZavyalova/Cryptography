@@ -124,8 +124,8 @@ public class RSA {
     @Getter
     RSAKey rSAKey=null;
     public RSA(SimplicityMode testMode, float probability, int bitLength){
-        assert probability>0.5;
-        assert bitLength >=5;//так как 1_0000^2=1_0000_0000 а шифровние идет блоками побайтово
+        assert probability>=0.5: "probability>=0.5";
+        assert bitLength >=5 :"bitLength >=5";//так как 1_0000^2=1_0000_0000 а шифровние идет блоками побайтово
         generateKeys= new GenerateKeys(testMode, probability, bitLength);
     }
     public RSAKey  generateKey(){
