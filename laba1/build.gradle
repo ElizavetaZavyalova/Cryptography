@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // logging
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+
+    // code generator
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    //collections
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // configuration
+    implementation 'com.typesafe:config:1.4.2'
+}
+
+test {
+    useJUnitPlatform()
+}

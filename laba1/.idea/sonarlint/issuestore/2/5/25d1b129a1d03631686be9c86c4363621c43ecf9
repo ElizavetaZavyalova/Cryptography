@@ -1,0 +1,6 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ають€€€€
+e
+java:S26745"JCheck the return value of the "read" call to see how many bytes were read.(Н∞іию€€€€
+?
+java:S19058")Remove this unnecessary cast to "Object".(≈„а°

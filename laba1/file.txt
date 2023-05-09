@@ -1,0 +1,3 @@
+Padding is used in certain block cipher modes (like ECB and CBC) when the plain-text needs to be a multiple of the block size. If we are using a 16 byte block cipher, but our plain-text is only 9 bytes, then we need to pad out our data with 7 additional bytes.
+
+To do this we append 7 bytes all with the value of 0x07. The general case is if we need to add N bytes to make a full block, we append N bytes each with a value of N. This works only if the block size is less than 256 bytes, since a byte can only be a value between 0 and 255. See examples below for 8 byte block:
