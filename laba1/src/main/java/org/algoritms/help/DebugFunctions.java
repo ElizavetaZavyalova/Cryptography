@@ -10,11 +10,33 @@ public record DebugFunctions(){
             log.debug(byteToBinarryString(b));
         }
     }
-    public static String byteToBinarryString(byte b){
+    static String byteToBinarryString(byte b){
         return String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
     }
-    public static String byteToHexString(byte b){
+    static String byteToHexString(byte b){
         return String.format("%2s", Integer.toHexString(b & 0xFF)).replace(' ', '0');
+    }
+    static String intToHexString(int b){
+        return String.format("%8s", Integer.toHexString(b & 0xFF_FF_FF_FF)).replace(' ', '0');
+    }
+     static String intArrayToHexString(int[] bytes){
+        StringBuilder byteString;
+        byteString = new StringBuilder();
+        for (int aByte : bytes) {
+            byteString.append(intToHexString(aByte));
+            byteString.append("_");
+        }
+        return byteString.toString();
+    }
+    public static void debugIntHex(int bytes){
+        if (log.isDebugEnabled()) {
+            log.debug(intToHexString(bytes));
+        }
+    }
+    public static void debugIntArrayHex(int[] bytes){
+        if (log.isDebugEnabled()) {
+            log.debug(intArrayToHexString(bytes));
+        }
     }
     public static void debugByteArray(byte[] bytes){
         if (log.isDebugEnabled()) {
@@ -26,7 +48,7 @@ public record DebugFunctions(){
             log.debug(byteArrayToHexString(bytes));
         }
     }
-    public static String byteArrayToHexString(byte[] bytes){
+    static String byteArrayToHexString(byte[] bytes){
         StringBuilder byteString;
         byteString = new StringBuilder();
         for (byte aByte : bytes) {
@@ -35,7 +57,7 @@ public record DebugFunctions(){
         }
         return byteString.toString();
     }
-    public static String byteArrayToBinarryString(byte[] bytes){
+    static String byteArrayToBinarryString(byte[] bytes){
         StringBuilder byteString;
         byteString = new StringBuilder();
         for (byte aByte : bytes) {
@@ -64,7 +86,12 @@ public record DebugFunctions(){
             log.debug(debugByBitsNumber(b, 0));
         }
     }
-    private static String debugByBitsNumber(byte b, int digit){
+    public static void debugWrite(String s){
+        if (log.isDebugEnabled()) {
+            log.debug("------------------------"+s+"-------------------------------");
+        }
+    }
+     static String debugByBitsNumber(byte b, int digit){
         StringBuilder biteIndexString;
         biteIndexString = new StringBuilder();
          for(int i=1; i<=8; i++){
