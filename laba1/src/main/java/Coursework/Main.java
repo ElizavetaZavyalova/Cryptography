@@ -33,12 +33,14 @@ public class Main {
         DebugFunctions.debugByteHexArray(t);
        System.out.println(BigInteger.valueOf(-1));
         BigInteger massage= BigInteger.valueOf(11111);
-        LUC luc=new LUC(SimplicityMode.farm, 0.99F,128);
+        LUC luc=new LUC(SimplicityMode.farm, 0.99F,30);
         LUCKey key=luc.generateKey();
         System.out.println(key);
         System.out.println(massage);
         massage=(LUCRecurent.v(massage ,key.getE(),key.getN()));
         System.out.println(massage);
+        BigInteger massage5=(LUCRecurent.v(massage,key.getD().getD(massage),key.getN()));
+        System.out.println(massage5);
         BigInteger massage1=(LUCRecurent.v(massage,key.getD().getP_qx(),key.getN()));
         System.out.println(massage1);
         BigInteger massage2=(LUCRecurent.v(massage,key.getD().getP_q_(),key.getN()));
@@ -47,6 +49,7 @@ public class Main {
         System.out.println(massage3);
         BigInteger massage4=(LUCRecurent.v(massage,key.getD().getPxqx(),key.getN()));
         System.out.println(massage4);
+
 
 
     }

@@ -22,7 +22,7 @@ public record LUCRecurent() {
                     vN_1=v2n.mod(mod);
                 }
             }
-            return vN;
+            return vN.mod(mod);
         }
 
         static boolean   isEven(BigInteger e){
