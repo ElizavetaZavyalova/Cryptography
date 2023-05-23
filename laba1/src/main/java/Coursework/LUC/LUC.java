@@ -53,11 +53,12 @@ public class LUC {
             int addLength= random.nextInt(bitLength>>1,(bitLength-1));
             BigInteger addNum=new BigInteger(addLength,random).setBit(addLength>>2-1).clearBit(0);
             BigInteger q=generateSimpleBigInteger(p.add(addNum));
-            lucKey.setE(makeE(p, q));
             lucKey.setN(p.multiply(q));
-            lucKey.d.setQ(q);
-            lucKey.d.setP(p);
-            lucKey.d.make(lucKey.getE());
+
+                lucKey.setE(makeE(p, q));
+                lucKey.d.setQ(q);
+                lucKey.d.setP(p);
+                lucKey.d.make(lucKey.getE());
             return  lucKey;
         }
         BigInteger makeMul(BigInteger p, BigInteger q){

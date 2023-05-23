@@ -39,7 +39,9 @@ public class Main {
         System.out.println(massage);
         massage=(LUCRecurent.v(massage ,key.getE(),key.getN()));
         System.out.println(massage);
-        BigInteger massage5=(LUCRecurent.v(massage,key.getD().getD(massage),key.getN()));
+        BigInteger s=key.getD().getD(massage);
+        System.out.println("s:"+s);
+        BigInteger massage5=(LUCRecurent.v(massage,s,key.getN()));
         System.out.println(massage5);
         BigInteger massage1=(LUCRecurent.v(massage,key.getD().getP_qx(),key.getN()));
         System.out.println(massage1);

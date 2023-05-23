@@ -24,6 +24,7 @@ public class LUCKey {
         BigInteger pxq_;
         BigInteger p_qx;
         BigInteger p_q_;
+        BigInteger d;
         private static class GSDResult{
             BigInteger k;
             BigInteger d;
@@ -49,11 +50,11 @@ public class LUCKey {
         }
 
         public void make(BigInteger e){
-            pxqx=lcm(p.add(BigInteger.ONE),q.add(BigInteger.ONE));//(p+1)(q+1)
+           pxqx=lcm(p.add(BigInteger.ONE),q.add(BigInteger.ONE));//(p+1)(q+1)
             p_qx=lcm(p.subtract(BigInteger.ONE),q.add(BigInteger.ONE));//(p-1)(q+1)
             p_q_=lcm(p.subtract(BigInteger.ONE),q.subtract(BigInteger.ONE));//(p-1)(q-1)
             pxq_=lcm(p.add(BigInteger.ONE),q.subtract(BigInteger.ONE));//(p+1)(q-1)
-           GSDResult res=new GSDResult();
+            GSDResult res=new GSDResult();
             gcd(e,pxqx,res);
             pxqx=res.getResult();
             gcd(e,p_qx,res);
@@ -62,10 +63,7 @@ public class LUCKey {
             pxq_=res.getResult();
             gcd(e,p_q_,res);
             p_q_=res.getResult();
-            /*pxqx=e.modPow(pxqx.subtract(BigInteger.ONE),pxqx);
-            p_qx=e.modPow(p_qx.subtract(BigInteger.ONE),p_qx);
-            pxq_=e.modPow(pxq_.subtract(BigInteger.ONE),pxq_);
-            p_q_=e.modPow(p_q_.subtract(BigInteger.ONE),p_q_);*/
+
         }
         BigInteger lcm(BigInteger a, BigInteger b){
             return a.multiply(b).divide(a.gcd(b));//(a*b)/gcd(a,b)
@@ -78,7 +76,7 @@ public class LUCKey {
             BigInteger s=lcm(p.subtract(BigInteger.valueOf(pD)),q.subtract(BigInteger.valueOf(pQ)));//(p+1)(q-1)
             GSDResult res=new GSDResult();
             gcd(e,s,res);
-            s=res.d;
+            s=res.getResult();
             return  s;
             /* if(pD==-1&&pQ==-1){
                 return p_q_;
